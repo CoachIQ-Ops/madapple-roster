@@ -1,18 +1,18 @@
 import { Badge } from "@/components/ui/badge";
 
 const positionColors: Record<string, string> = {
-  P: "bg-red-600/15 text-red-400 border-red-600/30",
+  P: "bg-ma-red-light text-ma-red border-ma-red/30",
   C: "bg-blue-600/15 text-blue-400 border-blue-600/30",
-  "1B": "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
-  "2B": "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
-  "3B": "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
-  SS: "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
-  IF: "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
-  MI: "bg-emerald-600/15 text-emerald-400 border-emerald-600/30",
+  "1B": "bg-ma-charcoal-light text-ma-grey border-ma-charcoal/40",
+  "2B": "bg-ma-charcoal-light text-ma-grey border-ma-charcoal/40",
+  "3B": "bg-ma-charcoal-light text-ma-grey border-ma-charcoal/40",
+  SS: "bg-ma-charcoal-light text-ma-grey border-ma-charcoal/40",
+  IF: "bg-ma-charcoal-light text-ma-grey border-ma-charcoal/40",
+  MI: "bg-ma-charcoal-light text-ma-grey border-ma-charcoal/40",
   OF: "bg-amber-600/15 text-amber-400 border-amber-600/30",
   CF: "bg-amber-600/15 text-amber-400 border-amber-600/30",
-  UTL: "bg-purple-600/15 text-purple-400 border-purple-600/30",
-  LHP: "bg-red-600/15 text-red-400 border-red-600/30",
+  UTL: "bg-ma-red-light text-ma-red border-ma-red/20",
+  LHP: "bg-ma-red-light text-ma-red border-ma-red/30",
 };
 
 function getPositionColor(pos: string): string {

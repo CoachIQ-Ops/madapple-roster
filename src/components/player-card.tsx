@@ -15,7 +15,7 @@ function getInitials(name: string): string {
 
 export function PlayerCard({ player }: { player: Player }) {
   return (
-    <Card className="group transition-all hover:border-red-600/30">
+    <Card className="group transition-all hover:border-ma-red/30">
       <CardContent className="p-5">
         <div className="flex items-start gap-4">
           <Avatar className="h-14 w-14 border-2 border-muted">
@@ -25,7 +25,7 @@ export function PlayerCard({ player }: { player: Player }) {
           </Avatar>
           <div className="flex-1 min-w-0 space-y-1.5">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold tabular-nums text-red-500 leading-none">
+              <span className="text-2xl font-bold tabular-nums text-ma-red leading-none">
                 #{player.number}
               </span>
             </div>

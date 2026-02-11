@@ -9,6 +9,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-ma-red: #ed1c24;
+  --color-ma-charcoal: #334651;
+  --color-ma-grey: #bcbec0;
+  --color-ma-red-light: #ed1c2426;
+  --color-ma-charcoal-light: #33465126;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -83,12 +88,12 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --background: #1a2a32;
+  --foreground: #f5f5f5;
+  --card: #243640;
+  --card-foreground: #f5f5f5;
+  --popover: #243640;
+  --popover-foreground: #f5f5f5;
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);

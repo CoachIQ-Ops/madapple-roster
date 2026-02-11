@@ -12,14 +12,14 @@ export function TeamCard({
 }) {
   return (
     <Link href={`/teams/${team.slug}`}>
-      <Card className="group cursor-pointer transition-all hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/5">
+      <Card className="group cursor-pointer transition-all hover:border-ma-red/50 hover:shadow-lg hover:shadow-ma-red/5">
         <CardContent className="p-6">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
               <Badge variant="outline" className="mb-2 text-xs">
                 {team.ageGroup}
               </Badge>
-              <h3 className="text-lg font-semibold tracking-tight group-hover:text-red-500 transition-colors">
+              <h3 className="text-lg font-semibold tracking-tight group-hover:text-ma-red transition-colors">
                 {team.name}
               </h3>
               <p className="text-sm text-muted-foreground">
@@ -31,7 +31,7 @@ export function TeamCard({
               <p className="text-xs text-muted-foreground">Players</p>
             </div>
           </div>
-          <div className="mt-4 flex items-center text-sm text-muted-foreground group-hover:text-red-500 transition-colors">
+          <div className="mt-4 flex items-center text-sm text-muted-foreground group-hover:text-ma-red transition-colors">
             View Roster
             <svg
               className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"

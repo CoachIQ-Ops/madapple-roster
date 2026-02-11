@@ -25,7 +25,7 @@ export function AgeGroupTabs({ teams, playerCounts }: Props) {
     <Tabs defaultValue={activeGroups[0]} className="w-full">
       <TabsList className="flex flex-wrap h-auto gap-1 bg-muted/50 p-1">
         {activeGroups.map((ag) => (
-          <TabsTrigger key={ag} value={ag} className="data-[state=active]:bg-red-600 data-[state=active]:text-white">
+          <TabsTrigger key={ag} value={ag} className="data-[state=active]:bg-ma-red data-[state=active]:text-white">
             {ag}
             <span className="ml-1.5 text-xs opacity-70">
               ({teamsByAge[ag].length})
