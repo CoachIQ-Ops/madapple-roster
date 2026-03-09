@@ -68,7 +68,7 @@ export function PlayerCard({ player }: { player: Player }) {
                 href={player.recruitingLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-md text-xs font-medium bg-ma-charcoal-light text-ma-grey border border-ma-charcoal/40 hover:bg-ma-charcoal/30 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-md text-xs font-medium bg-ma-charcoal text-white/90 border border-ma-grey/25 hover:border-ma-grey/50 hover:text-white transition-colors"
               >
                 <svg
                   className="h-3 w-3"

@@ -63,7 +63,7 @@ export default async function TeamPage({
                 {team.season}
               </Badge>
             </div>
-            <h1 className="text-3xl font-bold tracking-tight">{team.name}</h1>
+            <h1 className="text-3xl font-semibold tracking-tight">{team.name}</h1>
             <p className="text-muted-foreground">
               Coach {team.headCoach} &middot; {players.length} player
               {players.length !== 1 ? "s" : ""}

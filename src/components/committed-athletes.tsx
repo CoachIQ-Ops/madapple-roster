@@ -21,7 +21,7 @@ export function CommittedAthletes({
     <div className="space-y-4">
       <div className="flex items-center gap-3">
         <div className="h-2 w-2 rounded-full bg-ma-red animate-pulse" />
-        <h2 className="text-xl font-bold tracking-tight">
+        <h2 className="text-xl font-semibold tracking-tight">
           Committed Athletes
         </h2>
         <Badge

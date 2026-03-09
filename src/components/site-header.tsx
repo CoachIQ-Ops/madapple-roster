@@ -15,10 +15,10 @@ export function SiteHeader() {
             priority
           />
           <div>
-            <h1 className="text-lg font-bold leading-none tracking-wide text-white">
-              MAD APPLE
+            <h1 className="text-lg font-semibold leading-none tracking-wider text-white uppercase">
+              Mad Apple
             </h1>
-            <p className="text-xs tracking-widest text-ma-grey uppercase">
+            <p className="text-[10px] tracking-[0.2em] text-ma-grey uppercase">
               Sports Performance
             </p>
           </div>
