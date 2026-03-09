@@ -20,13 +20,13 @@ export function CommittedAthletes({
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <div className="h-2 w-2 rounded-full bg-ma-red animate-pulse" />
+        <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
         <h2 className="text-xl font-semibold tracking-tight">
           Committed Athletes
         </h2>
         <Badge
           variant="outline"
-          className="bg-ma-red-light text-ma-red border-ma-red/30"
+          className="bg-green-600/15 text-green-400 border-green-600/30"
         >
           {players.length}
         </Badge>
@@ -38,16 +38,16 @@ export function CommittedAthletes({
             href={`/teams/${player.teamSlug}`}
             className="flex-shrink-0 group"
           >
-            <div className="w-[220px] rounded-lg border border-ma-red/20 bg-ma-red-light p-4 transition-all hover:border-ma-red/40 hover:bg-ma-red/10">
+            <div className="w-[220px] rounded-lg border border-green-600/20 bg-green-600/5 p-4 transition-all hover:border-green-500/40 hover:bg-green-600/10">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg font-bold tabular-nums text-ma-red">
+                <span className="text-lg font-bold tabular-nums text-green-400">
                   #{player.number}
                 </span>
                 <span className="font-semibold text-sm truncate">
                   {player.name}
                 </span>
               </div>
-              <p className="text-xs text-ma-red font-medium mb-1 truncate">
+              <p className="text-xs text-green-400 font-medium mb-1 truncate">
                 {player.commitment}
               </p>
               <p className="text-xs text-muted-foreground truncate">

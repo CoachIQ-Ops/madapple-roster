@@ -22,7 +22,7 @@ export function PlayerCard({ player }: { player: Player }) {
     <Card
       className={`group transition-all ${
         isCommitted
-          ? "border-ma-red/30 hover:border-ma-red/50"
+          ? "border-green-600/30 hover:border-green-500/50"
           : "hover:border-ma-red/30"
       }`}
     >
@@ -30,13 +30,13 @@ export function PlayerCard({ player }: { player: Player }) {
         <div className="flex items-start gap-4">
           <Avatar
             className={`h-14 w-14 border-2 ${
-              isCommitted ? "border-ma-red/40" : "border-muted"
+              isCommitted ? "border-green-600/40" : "border-muted"
             }`}
           >
             <AvatarFallback
               className={`font-bold text-lg ${
                 isCommitted
-                  ? "bg-ma-red-light text-ma-red"
+                  ? "bg-green-600/15 text-green-400"
                   : "bg-muted text-muted-foreground"
               }`}
             >
@@ -59,7 +59,7 @@ export function PlayerCard({ player }: { player: Player }) {
               )}
             </div>
             {player.commitment && (
-              <Badge className="bg-ma-red-light text-ma-red border-ma-red/30 text-xs mt-1" variant="outline">
+              <Badge className="bg-green-600/15 text-green-400 border-green-600/30 text-xs mt-1" variant="outline">
                 {player.commitment}
               </Badge>
             )}

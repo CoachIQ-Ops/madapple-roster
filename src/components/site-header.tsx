@@ -8,7 +8,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/ma-logo.png"
-            alt="Mad Apple Sports Performance"
+            alt="Mad Apple Softball"
             width={120}
             height={100}
             className="h-10 w-auto"
@@ -19,7 +19,7 @@ export function SiteHeader() {
               Mad Apple
             </h1>
             <p className="text-[10px] tracking-[0.2em] text-ma-grey uppercase">
-              Sports Performance
+              Softball
             </p>
           </div>
         </Link>
