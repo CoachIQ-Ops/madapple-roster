@@ -31,6 +31,8 @@ export default async function TeamPage({
   if (!team) notFound();
 
   const players = await getPlayersByTeamId(team.id);
+  const committedCount = players.filter((p) => p.commitment).length;
+  const recruitingCount = players.filter((p) => p.recruitingLink).length;
 
   return (
     <div className="space-y-6">
@@ -65,6 +67,18 @@ export default async function TeamPage({
             <p className="text-muted-foreground">
               Coach {team.headCoach} &middot; {players.length} player
               {players.length !== 1 ? "s" : ""}
+              {committedCount > 0 && (
+                <span className="text-green-400">
+                  {" "}
+                  &middot; {committedCount} committed
+                </span>
+              )}
+              {recruitingCount > 0 && (
+                <span className="text-blue-400">
+                  {" "}
+                  &middot; {recruitingCount} recruiting
+                </span>
+              )}
             </p>
           </div>
         </div>
@@ -72,7 +86,7 @@ export default async function TeamPage({
 
       <Separator />
 
-      <RosterWithFilters players={players} />
+      <RosterWithFilters key={team.id} players={players} />
     </div>
   );
 }

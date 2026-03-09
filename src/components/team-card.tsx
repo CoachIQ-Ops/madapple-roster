@@ -6,9 +6,13 @@ import type { Team } from "@/lib/airtable";
 export function TeamCard({
   team,
   playerCount,
+  committedCount,
+  recruitingCount,
 }: {
   team: Team;
   playerCount: number;
+  committedCount: number;
+  recruitingCount: number;
 }) {
   return (
     <Link href={`/teams/${team.slug}`}>
@@ -31,6 +35,22 @@ export function TeamCard({
               <p className="text-xs text-muted-foreground">Players</p>
             </div>
           </div>
+          {(committedCount > 0 || recruitingCount > 0) && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {committedCount > 0 && (
+                <span className="inline-flex items-center gap-1.5 text-xs text-green-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                  {committedCount} committed
+                </span>
+              )}
+              {recruitingCount > 0 && (
+                <span className="inline-flex items-center gap-1.5 text-xs text-blue-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                  {recruitingCount} recruiting
+                </span>
+              )}
+            </div>
+          )}
           <div className="mt-4 flex items-center text-sm text-muted-foreground group-hover:text-ma-red transition-colors">
             View Roster
             <svg

@@ -14,6 +14,7 @@ import type { Player } from "@/lib/airtable";
 export function RosterWithFilters({ players }: { players: Player[] }) {
   const [posFilter, setPosFilter] = useState("all");
   const [yearFilter, setYearFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
 
   const positions = useMemo(() => {
     const set = new Set<string>();
@@ -36,6 +37,9 @@ export function RosterWithFilters({ players }: { players: Player[] }) {
     return Array.from(set).sort();
   }, [players]);
 
+  const hasCommitted = players.some((p) => p.commitment);
+  const hasRecruiting = players.some((p) => p.recruitingLink);
+
   const filtered = useMemo(() => {
     return players.filter((p) => {
       if (posFilter !== "all") {
@@ -46,9 +50,17 @@ export function RosterWithFilters({ players }: { players: Player[] }) {
       if (yearFilter !== "all") {
         if (p.gradYear !== Number(yearFilter)) return false;
       }
+      if (statusFilter === "committed") {
+        if (!p.commitment) return false;
+      } else if (statusFilter === "recruiting") {
+        if (!p.recruitingLink) return false;
+      }
       return true;
     });
-  }, [players, posFilter, yearFilter]);
+  }, [players, posFilter, yearFilter, statusFilter]);
+
+  const hasActiveFilter =
+    posFilter !== "all" || yearFilter !== "all" || statusFilter !== "all";
 
   return (
     <div>
@@ -83,11 +95,29 @@ export function RosterWithFilters({ players }: { players: Player[] }) {
           </Select>
         )}
 
-        {(posFilter !== "all" || yearFilter !== "all") && (
+        {(hasCommitted || hasRecruiting) && (
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-[160px]">
+              <SelectValue placeholder="Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Players</SelectItem>
+              {hasCommitted && (
+                <SelectItem value="committed">Committed</SelectItem>
+              )}
+              {hasRecruiting && (
+                <SelectItem value="recruiting">Recruiting</SelectItem>
+              )}
+            </SelectContent>
+          </Select>
+        )}
+
+        {hasActiveFilter && (
           <button
             onClick={() => {
               setPosFilter("all");
               setYearFilter("all");
+              setStatusFilter("all");
             }}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors px-3"
           >
@@ -98,7 +128,7 @@ export function RosterWithFilters({ players }: { players: Player[] }) {
 
       <p className="text-sm text-muted-foreground mb-4">
         {filtered.length} player{filtered.length !== 1 ? "s" : ""}
-        {(posFilter !== "all" || yearFilter !== "all") && " (filtered)"}
+        {hasActiveFilter && " (filtered)"}
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

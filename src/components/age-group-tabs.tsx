@@ -8,9 +8,16 @@ import { AGE_GROUPS } from "@/lib/airtable";
 interface Props {
   teams: Team[];
   playerCounts: Record<string, number>;
+  committedCounts: Record<string, number>;
+  recruitingCounts: Record<string, number>;
 }
 
-export function AgeGroupTabs({ teams, playerCounts }: Props) {
+export function AgeGroupTabs({
+  teams,
+  playerCounts,
+  committedCounts,
+  recruitingCounts,
+}: Props) {
   const teamsByAge = AGE_GROUPS.reduce(
     (acc, ag) => {
       acc[ag] = teams.filter((t) => t.ageGroup === ag);
@@ -41,6 +48,8 @@ export function AgeGroupTabs({ teams, playerCounts }: Props) {
                 key={team.id}
                 team={team}
                 playerCount={playerCounts[team.id] || 0}
+                committedCount={committedCounts[team.id] || 0}
+                recruitingCount={recruitingCounts[team.id] || 0}
               />
             ))}
           </div>

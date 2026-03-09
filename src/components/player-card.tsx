@@ -5,8 +5,10 @@ import { PositionBadges } from "@/components/position-badge";
 import type { Player } from "@/lib/airtable";
 
 function getInitials(name: string): string {
+  if (!name.trim()) return "??";
   return name
     .split(" ")
+    .filter(Boolean)
     .map((n) => n[0])
     .join("")
     .toUpperCase()
@@ -14,12 +16,30 @@ function getInitials(name: string): string {
 }
 
 export function PlayerCard({ player }: { player: Player }) {
+  const isCommitted = !!player.commitment;
+
   return (
-    <Card className="group transition-all hover:border-ma-red/30">
+    <Card
+      className={`group transition-all ${
+        isCommitted
+          ? "border-green-600/30 hover:border-green-500/50"
+          : "hover:border-ma-red/30"
+      }`}
+    >
       <CardContent className="p-5">
         <div className="flex items-start gap-4">
-          <Avatar className="h-14 w-14 border-2 border-muted">
-            <AvatarFallback className="bg-muted text-muted-foreground font-bold text-lg">
+          <Avatar
+            className={`h-14 w-14 border-2 ${
+              isCommitted ? "border-green-600/40" : "border-muted"
+            }`}
+          >
+            <AvatarFallback
+              className={`font-bold text-lg ${
+                isCommitted
+                  ? "bg-green-600/15 text-green-400"
+                  : "bg-muted text-muted-foreground"
+              }`}
+            >
               {getInitials(player.name)}
             </AvatarFallback>
           </Avatar>
@@ -37,20 +57,46 @@ export function PlayerCard({ player }: { player: Player }) {
                   Class of {player.gradYear}
                 </span>
               )}
-              {player.commitment && (
-                <Badge className="bg-green-600/15 text-green-400 border-green-600/30 text-xs" variant="outline">
-                  {player.commitment}
-                </Badge>
-              )}
             </div>
+            {player.commitment && (
+              <Badge className="bg-green-600/15 text-green-400 border-green-600/30 text-xs mt-1" variant="outline">
+                {player.commitment}
+              </Badge>
+            )}
             {player.recruitingLink && (
               <a
                 href={player.recruitingLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-blue-400 hover:underline"
+                className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-md text-xs font-medium bg-blue-600/15 text-blue-400 border border-blue-600/30 hover:bg-blue-600/25 transition-colors"
               >
+                <svg
+                  className="h-3 w-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                  />
+                </svg>
                 Recruiting Profile
+                <svg
+                  className="h-3 w-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
               </a>
             )}
           </div>
