@@ -38,14 +38,14 @@ export function TeamCard({
           {(committedCount > 0 || recruitingCount > 0) && (
             <div className="mt-3 flex flex-wrap gap-2">
               {committedCount > 0 && (
-                <span className="inline-flex items-center gap-1.5 text-xs text-green-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                <span className="inline-flex items-center gap-1.5 text-xs text-ma-red">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ma-red" />
                   {committedCount} committed
                 </span>
               )}
               {recruitingCount > 0 && (
-                <span className="inline-flex items-center gap-1.5 text-xs text-blue-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                <span className="inline-flex items-center gap-1.5 text-xs text-ma-grey">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ma-grey" />
                   {recruitingCount} recruiting
                 </span>
               )}

@@ -22,7 +22,7 @@ export function PlayerCard({ player }: { player: Player }) {
     <Card
       className={`group transition-all ${
         isCommitted
-          ? "border-green-600/30 hover:border-green-500/50"
+          ? "border-ma-red/30 hover:border-ma-red/50"
           : "hover:border-ma-red/30"
       }`}
     >
@@ -30,13 +30,13 @@ export function PlayerCard({ player }: { player: Player }) {
         <div className="flex items-start gap-4">
           <Avatar
             className={`h-14 w-14 border-2 ${
-              isCommitted ? "border-green-600/40" : "border-muted"
+              isCommitted ? "border-ma-red/40" : "border-muted"
             }`}
           >
             <AvatarFallback
               className={`font-bold text-lg ${
                 isCommitted
-                  ? "bg-green-600/15 text-green-400"
+                  ? "bg-ma-red-light text-ma-red"
                   : "bg-muted text-muted-foreground"
               }`}
             >
@@ -59,7 +59,7 @@ export function PlayerCard({ player }: { player: Player }) {
               )}
             </div>
             {player.commitment && (
-              <Badge className="bg-green-600/15 text-green-400 border-green-600/30 text-xs mt-1" variant="outline">
+              <Badge className="bg-ma-red-light text-ma-red border-ma-red/30 text-xs mt-1" variant="outline">
                 {player.commitment}
               </Badge>
             )}
@@ -68,7 +68,7 @@ export function PlayerCard({ player }: { player: Player }) {
                 href={player.recruitingLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-md text-xs font-medium bg-blue-600/15 text-blue-400 border border-blue-600/30 hover:bg-blue-600/25 transition-colors"
+                className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-md text-xs font-medium bg-ma-charcoal-light text-ma-grey border border-ma-charcoal/40 hover:bg-ma-charcoal/30 hover:text-white transition-colors"
               >
                 <svg
                   className="h-3 w-3"

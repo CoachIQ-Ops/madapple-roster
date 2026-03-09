@@ -68,13 +68,13 @@ export default async function TeamPage({
               Coach {team.headCoach} &middot; {players.length} player
               {players.length !== 1 ? "s" : ""}
               {committedCount > 0 && (
-                <span className="text-green-400">
+                <span className="text-ma-red">
                   {" "}
                   &middot; {committedCount} committed
                 </span>
               )}
               {recruitingCount > 0 && (
-                <span className="text-blue-400">
+                <span className="text-ma-grey">
                   {" "}
                   &middot; {recruitingCount} recruiting
                 </span>
