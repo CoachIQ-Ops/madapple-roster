@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import type { Team } from "@/lib/airtable";
 
 export function TeamCard({
@@ -15,56 +13,76 @@ export function TeamCard({
   recruitingCount: number;
 }) {
   return (
-    <Link href={`/teams/${team.slug}`}>
-      <Card className="group cursor-pointer transition-all hover:border-ma-red/50 hover:shadow-lg hover:shadow-ma-red/5">
-        <CardContent className="p-6">
-          <div className="flex items-start justify-between">
-            <div className="space-y-1">
-              <Badge variant="outline" className="mb-2 text-xs">
-                {team.ageGroup}
-              </Badge>
-              <h3 className="text-lg font-semibold tracking-tight group-hover:text-ma-red transition-colors">
+    <Link href={`/teams/${team.slug}`} className="group block h-full">
+      <article className="relative h-full overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all hover:border-ma-red/40 hover:shadow-lg hover:-translate-y-0.5">
+        {/* Top accent stripe */}
+        <div className="h-1 bg-gradient-to-r from-ma-red via-ma-red to-ma-charcoal" />
+
+        <div className="p-5">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-md bg-ma-charcoal text-white text-[11px] font-semibold tracking-wide">
+                  {team.ageGroup}
+                </span>
+                <span className="text-[11px] text-muted-foreground tracking-wide">
+                  {team.season}
+                </span>
+              </div>
+              <h3 className="text-base font-semibold text-ma-charcoal leading-tight group-hover:text-ma-red transition-colors">
                 {team.name}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground mt-1">
                 Coach {team.headCoach}
               </p>
             </div>
-            <div className="text-right">
-              <p className="text-2xl font-bold tabular-nums">{playerCount}</p>
-              <p className="text-xs text-muted-foreground">Players</p>
+            <div className="text-right shrink-0">
+              <div className="text-2xl font-bold tabular-nums text-ma-charcoal leading-none">
+                {playerCount}
+              </div>
+              <div className="text-[10px] tracking-wider text-muted-foreground uppercase mt-1">
+                Players
+              </div>
             </div>
           </div>
+
           {(committedCount > 0 || recruitingCount > 0) && (
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {committedCount > 0 && (
-                <span className="inline-flex items-center gap-1.5 text-xs text-green-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                <span className="inline-flex items-center gap-1.5 text-xs px-2 py-1 rounded-md bg-ma-emerald-tint text-emerald-700 font-medium">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   {committedCount} committed
                 </span>
               )}
               {recruitingCount > 0 && (
-                <span className="inline-flex items-center gap-1.5 text-xs text-ma-grey">
+                <span className="inline-flex items-center gap-1.5 text-xs px-2 py-1 rounded-md bg-secondary text-ma-charcoal font-medium">
                   <span className="h-1.5 w-1.5 rounded-full bg-ma-grey" />
                   {recruitingCount} recruiting
                 </span>
               )}
             </div>
           )}
-          <div className="mt-4 flex items-center text-sm text-muted-foreground group-hover:text-ma-red transition-colors">
-            View Roster
+
+          <div className="mt-5 pt-4 border-t border-border flex items-center justify-between text-sm">
+            <span className="text-muted-foreground group-hover:text-ma-red transition-colors font-medium">
+              View Roster
+            </span>
             <svg
-              className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+              className="h-4 w-4 text-muted-foreground transition-all group-hover:text-ma-red group-hover:translate-x-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </article>
     </Link>
   );
 }
