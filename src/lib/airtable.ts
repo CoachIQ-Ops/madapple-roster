@@ -28,6 +28,7 @@ export interface Player {
   name: string;
   number: number;
   teamId: string;
+  teamIds: string[];
   teamName?: string;
   gradYear: number | null;
   position: string | null;
@@ -114,6 +115,7 @@ export async function getPlayers(teamId?: string): Promise<Player[]> {
     name: r.fields.Name,
     number: r.fields.Number,
     teamId: r.fields.Team?.[0] || "",
+    teamIds: r.fields.Team || [],
     gradYear: r.fields["Grad Year"] || null,
     position: r.fields.Position || null,
     recruitingLink: r.fields["Recruiting Link"] || null,
@@ -129,8 +131,17 @@ export async function getTeamBySlug(slug: string): Promise<Team | null> {
 export async function getPlayersByTeamId(teamId: string): Promise<Player[]> {
   const allPlayers = await getPlayers();
   return allPlayers
-    .filter((p) => p.teamId === teamId)
+    .filter((p) => p.teamIds.includes(teamId))
     .sort((a, b) => a.number - b.number);
 }
 
-export const AGE_GROUPS = ["18U", "16U", "14U", "13U", "12U", "11U", "10U"] as const;
+export const AGE_GROUPS = [
+  "Graduates",
+  "18U",
+  "16U",
+  "14U",
+  "13U",
+  "12U",
+  "11U",
+  "10U",
+] as const;

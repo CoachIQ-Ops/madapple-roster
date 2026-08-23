@@ -48,7 +48,7 @@ These are set in both `.env.local` (local dev) and Vercel (production).
 | Field | Type |
 |-------|------|
 | Team Name | Text (primary) |
-| Age Group | Single Select (18U, 16U, 14U, 13U, 12U, 11U, 10U) |
+| Age Group | Single Select (Graduates, 18U, 16U, 14U, 13U, 12U, 11U, 10U) |
 | Head Coach | Text |
 | Season | Text |
 

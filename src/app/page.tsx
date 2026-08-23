@@ -14,15 +14,14 @@ export default async function HomePage() {
   const recruitingCounts: Record<string, number> = {};
 
   for (const player of players) {
-    if (player.teamId) {
-      playerCounts[player.teamId] = (playerCounts[player.teamId] || 0) + 1;
+    for (const teamId of player.teamIds) {
+      if (!teamMap.has(teamId)) continue;
+      playerCounts[teamId] = (playerCounts[teamId] || 0) + 1;
       if (player.commitment) {
-        committedCounts[player.teamId] =
-          (committedCounts[player.teamId] || 0) + 1;
+        committedCounts[teamId] = (committedCounts[teamId] || 0) + 1;
       }
       if (player.recruitingLink) {
-        recruitingCounts[player.teamId] =
-          (recruitingCounts[player.teamId] || 0) + 1;
+        recruitingCounts[teamId] = (recruitingCounts[teamId] || 0) + 1;
       }
     }
   }
